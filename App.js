@@ -40,9 +40,11 @@ export default function App() {
   return (
     <View style={styles.container}>
       <FlatList
+        style={styles.list}
         data={languages}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
+        ItemSeparatorComponent={() => <View style={{height: 20}} />}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }
@@ -53,9 +55,15 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: '#efefef',
     alignItems: 'center',
     justifyContent: 'center',
+    width: '100%',
+    padding: 20
   },
+  list: {
+    height: "min-content",
+    display: "flex",
+    flexDirection: "column",
+  }
 });
